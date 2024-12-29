@@ -1,19 +1,16 @@
 {
-  "name": "@monorepo-template/core",
+  "name": "@davedennisdotdev/core",
   "version": "0.0.0",
-  "scripts": {
-    "test": "sst shell vitest"
-  },
+  "type": "module",
+  "sideEffects": false,
   "exports": {
-    "./*": [
-      "./src/*/index.ts",
-      "./src/*.ts"
-    ]
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "sst": "*"
-  },
-  "devDependencies": {
-    "vitest": "^2.0.3"
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0"
   }
 }
