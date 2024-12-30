@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+  }
+}
+
+/* Code Block Styles */
+.syntax-highlighter {
+  @apply my-6 rounded-lg border-2 border-zinc-200 overflow-hidden bg-zinc-950;
+}
+
+.syntax-highlighter pre {
+  @apply p-4 overflow-x-auto font-mono text-sm;
+}
+
+.syntax-highlighter code {
+  @apply font-mono text-sm leading-relaxed;
+}
+
+/* Add the retro-style dots for code blocks */
+.syntax-highlighter:before {
+  content: '';
+  @apply block h-6 w-full bg-zinc-800 border-b border-zinc-700 relative;
+}
+
+.syntax-highlighter:after {
+  content: '● ● ●';
+  @apply absolute top-1.5 left-4 text-xs text-zinc-600 tracking-wider;
+}
+
+/* Callout Styles */
+.callout {
+  @apply my-6 flex gap-4 rounded-lg border-2 border-zinc-200 p-4;
+}
+
+/* Blog post content styles */
+.blog-content h1 {
+  @apply text-4xl font-bold font-mono mb-6;
+}
+
+.blog-content h2 {
+  @apply text-3xl font-bold font-mono mt-12 mb-6;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-bold font-mono mt-8 mb-4;
+}
+
+.blog-content p {
+  @apply font-mono leading-7 mb-6;
+}
+
+.blog-content ul {
+  @apply font-mono my-6 ml-6 list-disc [&>li]:mt-2;
+}
+
+.blog-content ol {
+  @apply font-mono my-6 ml-6 list-decimal [&>li]:mt-2;
+}
+
+/* Inline code styles */
+:not(pre) > code {
+  @apply px-1.5 py-0.5 rounded-md bg-zinc-100 font-mono text-sm border border-zinc-300;
+}
+
