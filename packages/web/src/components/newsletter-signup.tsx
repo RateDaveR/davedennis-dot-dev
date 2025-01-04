@@ -4,18 +4,35 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form"
 
-type FormValues = {
-  email: string;
-};
+const formSchema = z.object({
+  email: z.string().email({
+    message: "Invalid email address",
+  }),
+})
 
 export function NewsletterSignup() {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>()
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data)
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+    },
+  })
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
     setIsSubmitted(true)
   }
 
@@ -28,26 +45,29 @@ export function NewsletterSignup() {
         {isSubmitted ? (
           <p className="font-mono text-sm">Thanks for subscribing!</p>
         ) : (
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                {...register("email", { 
-                  required: "Email is required", 
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address"
-                  }
-                })}
-                className="font-mono"
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter your email"
+                        {...field}
+                        className="font-mono"
+                      />
+                    </FormControl>
+                    <FormMessage className="font-mono text-xs" />
+                  </FormItem>
+                )}
               />
-              {errors.email && <p className="mt-1 font-mono text-xs text-red-500">{errors.email.message as string}</p>}
-            </div>
-            <Button type="submit" className="w-full font-mono">
-              Subscribe
-            </Button>
-          </form>
+              <Button type="submit" className="w-full font-mono">
+                Subscribe
+              </Button>
+            </form>
+          </Form>
         )}
       </CardContent>
     </Card>

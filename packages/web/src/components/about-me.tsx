@@ -15,7 +15,7 @@ export function AboutMe() {
             <CardContent className="space-y-4">
               <div className="flex items-center space-x-4">
                 <Image
-                  src="/placeholder.svg?height=100&width=100"
+                  src="/me.jpg?height=100&width=100"
                   alt="Dave Dennis"
                   width={100}
                   height={100}
@@ -43,7 +43,7 @@ export function AboutMe() {
                     <div className="flex items-center space-x-2">
                       <div className="w-12 h-12 rounded-lg border-2 border-primary overflow-hidden [box-shadow:4px_4px_0_0_rgba(0,0,0,1)] dark:shadow-white">
                         <Image
-                          src="/placeholder.svg?text=GS"
+                          src="/goldman.jpg?text=GS"
                           alt="Goldman Sachs logo"
                           width={48}
                           height={48}
@@ -64,7 +64,7 @@ export function AboutMe() {
                     <div className="flex items-center space-x-2">
                       <div className="w-12 h-12 rounded-lg border-2 border-primary overflow-hidden [box-shadow:4px_4px_0_0_rgba(0,0,0,1)] dark:shadow-white">
                         <Image
-                          src="/placeholder.svg?text=AF"
+                          src="/cg.jpg?text=AF"
                           alt="American Funds logo"
                           width={48}
                           height={48}

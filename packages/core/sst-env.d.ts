@@ -6,5 +6,35 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
+    "ApiRouter": {
+      "type": "sst.aws.Router"
+      "url": string
+    }
+    "CDNBucket": {
+      "name": string
+      "type": "sst.aws.Bucket"
+    }
+    "CDNBucketRouter": {
+      "type": "sst.aws.Router"
+      "url": string
+    }
+    "Client": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "Table": {
+      "name": string
+      "type": "sst.aws.Dynamo"
+    }
+    "Trpc": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "WebApp": {
+      "type": "sst.aws.Nextjs"
+      "url": string
+    }
   }
 }

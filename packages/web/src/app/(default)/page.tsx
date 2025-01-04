@@ -44,13 +44,13 @@ export default function LandingPage() {
             </div>
           </section>
 
-          <section id="publications" className="space-y-4">
+          {/*<section id="publications" className="space-y-4">
             <div className="flex items-center">
               <h2 className="font-mono text-2xl font-bold tracking-tight mr-4">PUBLICATIONS</h2>
               <div className="flex-grow border-t-2 border-primary"></div>
             </div>
             <Publications />
-          </section>
+          </section>*/}
 
           <section id="projects" className="space-y-4">
             <div className="flex items-center">
