@@ -1,4 +1,5 @@
 export const handler = async (event) => {
+    image: `interpolate{ddrouter.url}/public-key.txt`;
     console.log(`Hello World ${event}`);
     return {
         statusCode: 200,
