@@ -1,14 +1,13 @@
 import { domain } from "./dns";
+import { table } from "./table";
 
 const trpc = new sst.aws.Function("Trpc", {
     url: true,
     handler: "./packages/functions/src/api/index.handler",
-});
-
-const client = new sst.aws.Function("Client", {
-    url: true,
-    link: [trpc],
-    handler: "./packages/functions/src/api/client.handler",
+    link: [ table ],
+    environment: {
+        DYNAMODB_TABLE_NAME: table.name,
+    }
 });
 
 export const apiRouter = new sst.aws.Router("ApiRouter", {
